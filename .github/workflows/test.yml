@@ -19,3 +19,19 @@ jobs:
           python3 preflight.py examples/overnight-portugal.json --fail-if-no-payment-path
           code=$?
           test "$code" -eq 2
+      - name: Exercise the composite Action
+        id: preflight
+        continue-on-error: true
+        uses: ./
+        with:
+          profile: examples/overnight-portugal.json
+          fail-if-no-payment-path: "true"
+          report: action-integration-report.md
+      - name: Verify the Action enforced the gate
+        if: always()
+        env:
+          PREFLIGHT_OUTCOME: ${{ steps.preflight.outcome }}
+        run: |
+          test "$PREFLIGHT_OUTCOME" = "failure"
+          test -s action-integration-report.md
+          grep -q 'distribution_only' action-integration-report.md
