@@ -1,0 +1,29 @@
+name: Revenue Path Preflight
+description: Fail fast when a product has no declared, source-backed payment path
+branding:
+  icon: check-circle
+  color: green
+inputs:
+  profile:
+    description: Path to the JSON capability profile
+    required: true
+  fail-if-no-payment-path:
+    description: Return failure when no complete payment path is declared
+    required: false
+    default: "true"
+  report:
+    description: Markdown report path
+    required: false
+    default: revenue-path-report.md
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: |
+        set +e
+        extra=""
+        if [ "${{ inputs.fail-if-no-payment-path }}" = "true" ]; then extra="--fail-if-no-payment-path"; fi
+        python3 "${{ github.action_path }}/preflight.py" "${{ inputs.profile }}" --format markdown --output "${{ inputs.report }}" $extra
+        code=$?
+        cat "${{ inputs.report }}" >> "$GITHUB_STEP_SUMMARY"
+        exit $code

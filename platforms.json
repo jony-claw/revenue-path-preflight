@@ -1,0 +1,80 @@
+{
+  "checked_on": "2026-11-23",
+  "platforms": [
+    {
+      "name": "Apify Store",
+      "countries": ["PT"],
+      "listing_requires": ["apify_account", "accept_store_terms", "tested_product"],
+      "payout_requires": ["government_id", "billing_details", "payout_method"],
+      "fees": "20% commission plus platform usage costs; $20 minimum via PayPal/Wise, $100 other methods",
+      "discovery": "Native Store and search-engine discovery",
+      "warnings": ["KYC is mandatory before payout", "Free-plan users do not generate creator revenue"],
+      "sources": [
+        "https://docs.apify.com/actors/monetize",
+        "https://docs.apify.com/actors/monetize/monthly-payouts",
+        "https://docs.apify.com/actors/publishing/publish"
+      ]
+    },
+    {
+      "name": "Polar",
+      "countries": ["PT"],
+      "listing_requires": ["polar_account", "tested_product", "public_website"],
+      "payout_requires": ["stripe_connect", "government_id", "bank_account", "account_review"],
+      "fees": "Starter: 5% + $0.50 per transaction; payout fees may also apply",
+      "discovery": "Checkout infrastructure; not primarily a discovery marketplace",
+      "warnings": ["Main account review occurs before first payout"],
+      "sources": [
+        "https://docs.polar.sh/merchant-of-record/account-reviews",
+        "https://docs.polar.sh/merchant-of-record/fees",
+        "https://docs.polar.sh/merchant-of-record/supported-countries"
+      ]
+    },
+    {
+      "name": "Gumroad",
+      "countries": ["PT"],
+      "listing_requires": ["gumroad_account", "tested_product"],
+      "payout_requires": ["government_id", "portugal_bank_account", "tax_details"],
+      "fees": "Platform transaction fees apply; Discover sales carry a higher marketplace fee",
+      "discovery": "Gumroad Discover is available but not guaranteed",
+      "warnings": ["Portugal payouts are in EUR to a local bank account", "Minimum payout threshold applies"],
+      "sources": ["https://gumroad.com/help/article/13-getting-paid", "https://gumroad.com/pricing"]
+    },
+    {
+      "name": "Ko-fi Shop",
+      "countries": ["PT"],
+      "listing_requires": ["kofi_account", "tested_product"],
+      "payout_requires": ["paypal_or_stripe"],
+      "fees": "5% service fee on Shop sales plus PayPal/Stripe processing fees",
+      "discovery": "Primarily creator-led traffic; weak native discovery",
+      "warnings": ["Payments go directly to the connected processor"],
+      "sources": [
+        "https://help.ko-fi.com/hc/en-us/articles/360009712917-Ko-fi-Shop-Sell-digital-physical-products",
+        "https://help.ko-fi.com/hc/en-us/articles/115003980093-How-do-I-get-paid-"
+      ]
+    },
+    {
+      "name": "itch.io",
+      "countries": ["PT"],
+      "listing_requires": ["itch_account", "tested_product"],
+      "payout_requires": ["tax_details", "paypal_or_payoneer"],
+      "fees": "Open revenue share plus processor fees; payout mode has a $5 minimum and a one-time tax identity fee",
+      "discovery": "Native marketplace, strongest for games and creator tools",
+      "warnings": ["Payout mode requires tax interview and review", "First payout can take longer"],
+      "sources": ["https://itch.io/docs/creators/payments", "https://itch.io/docs/creators/faq"]
+    },
+    {
+      "name": "GitHub public release",
+      "revenue_capable": false,
+      "countries": ["PT"],
+      "listing_requires": ["github_account", "tested_product"],
+      "payout_requires": [],
+      "fees": "No listing fee; no built-in payment for ordinary repositories or Actions",
+      "discovery": "GitHub search, topics and releases",
+      "warnings": ["Distribution path only; payment_path_ready means publishable, not monetized"],
+      "sources": [
+        "https://docs.github.com/repositories/releasing-projects-on-github/managing-releases-in-a-repository",
+        "https://docs.github.com/actions/creating-actions/publishing-actions-in-github-marketplace"
+      ]
+    }
+  ]
+}
