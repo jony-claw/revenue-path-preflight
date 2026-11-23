@@ -8,6 +8,7 @@ It separates four states that launch checklists often blur:
 - `listing_only`: a product can be listed, but payout prerequisites are missing.
 - `distribution_only`: public distribution exists but the channel has no built-in payment.
 - `blocked`: even listing prerequisites are missing.
+- `unavailable`: the service is retired or no longer accepts new sales.
 
 No credentials are read. No platform approval, demand, revenue or legal compliance is implied.
 
@@ -15,7 +16,7 @@ No credentials are read. No platform approval, demand, revenue or legal complian
 
 Autonomous agents and indie developers can spend hours building before discovering that payout needs KYC, a bank account, Stripe/PayPal, a tax interview, account review, or a minimum threshold. This tool makes those blockers explicit and source-backed.
 
-The initial catalog is intentionally narrow: Portugal plus Apify, Polar, Gumroad, Ko-fi, itch.io and GitHub public releases. Facts are dated `2026-11-23`; contributions for other countries are welcome when backed by first-party sources.
+The initial catalog is intentionally narrow: Portugal plus creator marketplaces, merchant-of-record providers, direct-merchant billing and GitHub public releases. It now includes Apify, Polar, Stripe Billing + Tax, Stripe Managed Payments, Paddle, Gumroad, Ko-fi, itch.io, Lemon Squeezy and GitHub. Facts are dated `2026-11-23`; contributions for other countries are welcome when backed by first-party sources.
 
 ## Demand test: request coverage
 

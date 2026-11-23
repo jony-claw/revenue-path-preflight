@@ -20,13 +20,56 @@
       "countries": ["PT"],
       "listing_requires": ["polar_account", "tested_product", "public_website"],
       "payout_requires": ["stripe_connect", "government_id", "bank_account", "account_review"],
-      "fees": "Starter: 5% + $0.50 per transaction; payout fees may also apply",
+      "fees": "4% + $0.40 per transaction, plus documented international-card, subscription, usage-based and payout fees",
       "discovery": "Checkout infrastructure; not primarily a discovery marketplace",
       "warnings": ["Main account review occurs before first payout"],
       "sources": [
-        "https://docs.polar.sh/merchant-of-record/account-reviews",
-        "https://docs.polar.sh/merchant-of-record/fees",
-        "https://docs.polar.sh/merchant-of-record/supported-countries"
+        "https://polar.sh/docs/merchant-of-record/account-reviews",
+        "https://polar.sh/docs/merchant-of-record/fees",
+        "https://polar.sh/docs/merchant-of-record/supported-countries",
+        "https://polar.sh/docs/features/usage-based-billing"
+      ]
+    },
+    {
+      "name": "Stripe Billing + Tax",
+      "countries": ["PT"],
+      "listing_requires": ["stripe_account", "tested_product"],
+      "payout_requires": ["government_id", "bank_account", "tax_registrations", "compliance_owner"],
+      "fees": "Billing pay-as-you-go is 0.7% of Billing volume; Stripe Tax Basic is 0.5% where tax is calculated; payment processing is additional",
+      "discovery": "Billing infrastructure only; no marketplace discovery",
+      "warnings": ["The seller remains merchant of record", "Tax registration, filing, disputes and compliance remain the seller's responsibility"],
+      "sources": [
+        "https://stripe.com/billing/pricing",
+        "https://docs.stripe.com/billing/subscriptions/usage-based",
+        "https://stripe.com/tax/pricing",
+        "https://stripe.com/global"
+      ]
+    },
+    {
+      "name": "Stripe Managed Payments",
+      "countries": ["PT"],
+      "listing_requires": ["stripe_account", "tested_product", "managed_payments_eligible"],
+      "payout_requires": ["government_id", "bank_account", "account_review"],
+      "fees": "3.5% per successful Managed Payments transaction plus Payments and other applicable fees",
+      "discovery": "Billing infrastructure only; no marketplace discovery",
+      "warnings": ["Eligibility and supported digital-product types are account-dependent", "Confirm availability during onboarding before engineering"],
+      "sources": [
+        "https://docs.stripe.com/payments/managed-payments",
+        "https://stripe.com/pricing#managed-payments",
+        "https://stripe.com/global"
+      ]
+    },
+    {
+      "name": "Paddle",
+      "countries": ["PT"],
+      "listing_requires": ["paddle_account", "tested_product", "product_approval", "seller_country_confirmed"],
+      "payout_requires": ["government_id", "bank_account", "account_review"],
+      "fees": "5% + $0.50 per checkout transaction; custom pricing may apply",
+      "discovery": "Billing infrastructure only; no marketplace discovery",
+      "warnings": ["Usage-based billing is described as early access", "Confirm seller-country onboarding for the actual account before engineering"],
+      "sources": [
+        "https://www.paddle.com/pricing",
+        "https://developer.paddle.com/"
       ]
     },
     {
@@ -61,6 +104,17 @@
       "discovery": "Native marketplace, strongest for games and creator tools",
       "warnings": ["Payout mode requires tax interview and review", "First payout can take longer"],
       "sources": ["https://itch.io/docs/creators/payments", "https://itch.io/docs/creators/faq"]
+    },
+    {
+      "name": "Lemon Squeezy",
+      "availability": "retired",
+      "countries": ["PT"],
+      "listing_requires": [],
+      "payout_requires": [],
+      "fees": "Not applicable to a new integration",
+      "discovery": "Unavailable for new sales",
+      "warnings": ["Official notice says new sales stopped on 2026-11-10 and the service is shutting down"],
+      "sources": ["https://www.lemonsqueezy.com/"]
     },
     {
       "name": "GitHub public release",

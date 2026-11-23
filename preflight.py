@@ -24,6 +24,17 @@ def evaluate(profile: dict[str, Any], catalog: dict[str, Any]) -> dict[str, Any]
     capabilities = set(profile.get("capabilities", []))
     results = []
     for platform in catalog["platforms"]:
+        if platform.get("availability") == "retired":
+            results.append({
+                "platform": platform["name"],
+                "status": "unavailable",
+                "blockers": ["service_retired"],
+                "fees": platform.get("fees"),
+                "discovery": platform.get("discovery"),
+                "warnings": platform.get("warnings", []),
+                "sources": platform["sources"],
+            })
+            continue
         if country not in platform.get("countries", [country]):
             results.append({
                 "platform": platform["name"],
@@ -56,7 +67,7 @@ def evaluate(profile: dict[str, Any], catalog: dict[str, Any]) -> dict[str, Any]
             "warnings": platform.get("warnings", []),
             "sources": platform["sources"],
         })
-    rank = {"payment_path_ready": 0, "listing_only": 1, "distribution_only": 2, "blocked": 3}
+    rank = {"payment_path_ready": 0, "listing_only": 1, "distribution_only": 2, "blocked": 3, "unavailable": 4}
     results.sort(key=lambda x: (rank[x["status"]], x["platform"]))
     return {
         "generated_on": date.today().isoformat(),
@@ -66,7 +77,7 @@ def evaluate(profile: dict[str, Any], catalog: dict[str, Any]) -> dict[str, Any]
         "results": results,
         "summary": {
             key: sum(r["status"] == key for r in results)
-            for key in ("payment_path_ready", "listing_only", "distribution_only", "blocked")
+            for key in ("payment_path_ready", "listing_only", "distribution_only", "blocked", "unavailable")
         },
         "disclaimer": "Preflight only: platform approval, KYC and real demand are not guaranteed.",
     }
