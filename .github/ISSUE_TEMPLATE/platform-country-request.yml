@@ -1,0 +1,46 @@
+name: Request platform or country coverage
+description: Signal demand for one source-backed catalog addition
+title: "Coverage request: <platform> in <country>"
+labels:
+  - coverage-request
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to request one platform/country pair. Requests are demand signals, not promises of implementation or payout eligibility.
+  - type: input
+    id: platform
+    attributes:
+      label: Platform
+      description: The marketplace, billing provider, or distribution channel to evaluate.
+      placeholder: e.g. Lemon Squeezy
+    validations:
+      required: true
+  - type: input
+    id: country
+    attributes:
+      label: Country
+      description: Country name and ISO 3166-1 alpha-2 code.
+      placeholder: e.g. Germany (DE)
+    validations:
+      required: true
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use case and blocker
+      description: What are you trying to sell, and which listing or payout prerequisite is unclear?
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: First-party sources
+      description: Link official pricing, payout, KYC, country-support, and publishing documentation if known.
+      placeholder: One URL per line
+  - type: checkboxes
+    id: acknowledgement
+    attributes:
+      label: Acknowledgement
+      options:
+        - label: I understand that a catalog result does not guarantee approval, demand, payment, or legal compliance.
+          required: true
